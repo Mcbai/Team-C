@@ -16,7 +16,7 @@
 
 工欲善其事，必先利其器，一个好的开发环境对于开发效率也有很大的提升。团队使用的编辑器统一使用 [VsCode](https://code.visualstudio.com/)，统一配置。
 
-* 提升效率的常用技巧：vscode[代码片段使用以及相关技巧](document/vsSkill.md)
+* 提升效率的常用技巧：[vscode代码片段使用以及相关技巧](document/vsSkill.md)
 * 配置：安装[Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)插件进行配置
 
 ### 工程结构
@@ -90,7 +90,7 @@ project
 ### 接口管理与mocker
 
 开发前先约定接口
-[接口管理文档](document/mock.md)
+[接口管理与mocker文档](document/mock.md)
 
 ### 测试与发布
 
