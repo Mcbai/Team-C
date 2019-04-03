@@ -266,3 +266,70 @@ $ git config alias.br branch --global
 4. 当标记出了一个无bug的父提交和有bug的子提交后
 5. git 就会自动二分查找中间的提交，并让你使用 `git bisec good|bad` 来标记给出的提交是否有问题
 6. 当定位成功时，会返回出现bug的那个提交的相应信息
+
+
+## 提交区间
+如何指明一定区间的提交。当你有很多分支时，这对管理你的分支时十分有用，你可以用提交区间来解决 “这个分支还有哪些提交尚未合并到主分支？” 的问题
+
+### 双点(`..`)
+最常用的指明提交区间语法是双点。 这种语法可以让 Git 选出在一个分支中而不在另一个分支中的提交。 例如，你有如下的提交历史.
+
+![双点用法示例提交历史](./double-dot.png)
+
+你想要查看 experiment 分支中还有哪些提交尚未被合并入 master 分支。 你可以使用 master..experiment 来让 Git 显示这些提交。也就是 “在 experiment 分支中而不在 master 分支中的提交”。 为了使例子简单明了，我使用了示意图中提交对象的字母来代替真实日志的输出，所以会显示：
+
+```
+$ git log master..experiment
+D
+C
+```
+
+反过来，如果你想查看在 master 分支中而不在 experiment 分支中的提交，你只要交换分支名即可。 experiment..master 会显示在 master 分支中而不在 experiment 分支中的提交：
+
+```
+$ git log experiment..master
+F
+E
+```
+
+这可以让你保持 experiment 分支跟随最新的进度以及查看你即将合并的内容。 另一个常用的场景是查看你即将推送到远端的内容：
+
+```
+$ git log origin/master..HEAD
+```
+
+这个命令会输出在你当前分支中而不在远程 origin 中的提交。 如果你执行 `git push` 并且你的当前分支正在跟踪 origin/master，由 `git log origin/master..HEAD` 所输出的提交会被传输到远端服务器。如果你留空了其中的一边， Git 会默认为 HEAD。 例如， `git log origin/master..` 将会输出与之前例子相同的结果 —— Git 使用 HEAD 来代替留空的一边。
+
+### 多个指向
+双点语法很好用，但有时候你可能需要两个以上的分支才能确定你所需要的修订，比如查看哪些提交是被包含在某些分支中的一个，但是不在你当前的分支上。 Git 允许你在任意引用前加上 `^` 字符或者 `--not` 来指明你不希望提交被包含其中的分支。 因此下列3个命令是等价的：
+```
+$ git log refA..refB
+$ git log ^refA refB
+$ git log refB --not refA
+```
+这个语法很好用，因为你可以在查询中指定超过两个的引用，这是双点语法无法实现的。 比如，你想查看所有被 refA 或 refB 包含的但是不被 refC 包含的提交，你可以输入下面中的任意一个命令
+```
+$ git log refA refB ^refC
+$ git log refA refB --not refC
+```
+这就构成了一个十分强大的修订查询系统，你可以通过它来查看你的分支里包含了哪些东西。
+
+### 三点(`...`)
+最后一种主要的区间选择语法是三点，这个语法可以选择出被两个引用中的一个包含但又不被两者同时包含的提交。 再看看之前双点例子中的提交历史。 如果你想看 master 或者 experiment 中包含的但不是两者共有的提交，你可以执行
+
+$ git log master...experiment
+F
+E
+D
+C
+这和通常 log 按日期排序的输出一样，仅仅给出了4个提交的信息。
+
+这种情形下，log 命令的一个常用参数是 --left-right，它会显示每个提交到底处于哪一侧的分支。 这会让输出数据更加清晰。
+```
+$ git log --left-right master...experiment
+< F
+< E
+> D
+> C
+```
+有了这些工具，你就可以十分方便地查看你 Git 仓库中的提交。
