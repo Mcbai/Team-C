@@ -70,6 +70,7 @@ npm:  https://www.npmjs.com/package/webpack-bundle-analyzer
 例如：
 `import HelloWorld from '../../../../../HelloWrold.vue'`
 此情况下，我们可以配置`package.json`文件中的alias来解决问题。在vue-cli 3.0中，我们配置`chainWebpack`进行间接修改
+
 ```javascript
 /* vue.config.js */
 module.exports = {
@@ -89,4 +90,12 @@ module.exports = {
 ```
 这样，我们的例子可以改写为
 `import HelloWorld from '_com/HelloWorld.vue'`
+
 > 注意:在样式或者模板中引用路径时需在前加上`~`符号，否则路径解析会失败
+
+###### vscode支持
+
+在vscode中，配置完别名会出现IntelliSense失效，即无法用鼠标点击进行路径跳转。这时需新建`jsconfig.json`文件用于指定需要包含或排除的文件，以便vscode提供正确的IntelliSense。
+
+配置文章：https://segmentfault.com/a/1190000018013282?utm_source=tag-newest
+具体配置可直接参考文件: [jsconfig.json](../example/csscomb.json)
