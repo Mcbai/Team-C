@@ -98,4 +98,5 @@ module.exports = {
 在vscode中，配置完别名会出现IntelliSense失效，即无法用鼠标点击进行路径跳转。这时需新建`jsconfig.json`文件用于指定需要包含或排除的文件，以便vscode提供正确的IntelliSense。
 
 配置文章：https://segmentfault.com/a/1190000018013282?utm_source=tag-newest
-具体配置可直接参考文件: [jsconfig.json](../example/csscomb.json)
+
+具体配置可直接参考文件: [jsconfig.json](../example/jsconfig.json)
