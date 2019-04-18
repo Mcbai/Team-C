@@ -31,14 +31,20 @@ snippets文件示例如下
 
 ### 2. 初次安装vscode时同步配置
 ---
-安装sync-setting插件。此插件可以把vscode的设置，包括安装哪些插件，键位绑定，用户代码片段等上传到github上予以托管。当新的电脑需要这些配置的时候可以很方便地进行下载，实现了vscode的设置同步功能。
+###### 两种方式任选其一即可
+1. 安装`sync-setting`插件。此插件可以把vscode的设置，包括安装哪些插件，键位绑定，用户代码片段等上传到github上予以托管。当新的电脑需要这些配置的时候可以很方便地进行下载，实现了vscode的设置同步功能。
 使用方法：[具体文档](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
-    上传：输入sync-setting选择上传设置选项
+    上传：在vscode命令行`ctrl + shift + p`中输入`sync-setting`选择上传设置选项
     访问 https://github.com/settings/tokens 创建token并记录，输入进行上传
 
-    下载：输入sync-setting选择下载设置选项
+    下载：在vscode命令行`ctrl + shift + p`中输入`sync-setting`选择下载设置选项
     输入token以及Gist ID 进行设置下载，数据新员工可向老员工询问
+
+2. 使用`setting.json`文件进行初始化配置
+直接使用项目中`setting.json`或者向同事索要此文件。此方式可以对vscode的大部分配置进行自动配置，但没有同步插件的功能。下一步前端团队计划研发新三好内部前端初始化vscode插件，自动拉取常用的插件进行安装，实现只安装一个插件即可同步所有插件的功能。
+
+> 另外之后`setting.json`可能会作为项目的配置文件一起与代码进行上传，来规范同步每个人的vscode配置。
 
 ### 3. 前端开发常用技巧以及工具
 ---
