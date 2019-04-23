@@ -53,7 +53,6 @@ CSScomb可以很方便地对css代码进行美化功能，支持属性顺序配�
 
 使用说明：
 1. 在vscode应用商店中搜索`csscomb`并进行下载
-4. 将`{ "csscomb.formatOnSave": true,"csscomb.preset": "csscomb.json",}`写入VSCode的配置文件`setting.json`中
 
 ##### postman（测试后端接口，发送请求）
 postman经常用来发送特定请求来测试后台返回数据是否正常，在谷歌商店中安装并进行使用，也可下载本地端。官网下载：https://www.getpostman.com/products
