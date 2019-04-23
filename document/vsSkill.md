@@ -52,10 +52,8 @@ snippets文件示例如下
 CSScomb可以很方便地对css代码进行美化功能，支持属性顺序配置。可以很方便地避免因css代码不规范造成的问题。[示例配置文件](../example/csscomb.json)
 
 使用说明：
-1. 在vscode应用中搜索csscomb并进行下载
-2. 进行代码风格配置： 点击后选择相应的代码格式，生成配置文件 [生成代码风格配置](http://csscomb.com/config)
-3. 进行css属性顺序配置：[配置示例](https://github.com/csscomb/csscomb.js/blob/dev/config)
-4. 将配置好的文件写入setting.json文件中
+1. 在vscode应用商店中搜索`csscomb`并进行下载
+4. 将`{ "csscomb.formatOnSave": true,"csscomb.preset": "csscomb.json",}`写入VSCode的配置文件`setting.json`中
 
 ##### postman（测试后端接口，发送请求）
 postman经常用来发送特定请求来测试后台返回数据是否正常，在谷歌商店中安装并进行使用，也可下载本地端。官网下载：https://www.getpostman.com/products
