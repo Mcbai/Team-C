@@ -5,7 +5,7 @@
 ### 技术栈
 
 * **ES5+：** 熟练使用 ES5 及以上的语法，提升开发效率，不要随意引入第三方库。
-* **开发框架**：[Vue.js](https://cn.vuejs.org/)
+* **开发框架：**[Vue.js](https://cn.vuejs.org/)
 * **PC 端组件库：** [Element](http://element.eleme.io/#/zh-CN)
 * **移动端组件库：** [Vant](https://youzan.github.io/vant/#/zh-CN/intro)
 * **常用工具库：** [lodash](https://lodash.com/)， [dayjs](https://github.com/iamkun/dayjs)
@@ -87,26 +87,26 @@ project
 
 `pages` 文件夹里放的就是每一个页面，每一个路由就对应一个页面，每一个页面就是一个文件夹，页面的入口都使用 index.vue
 
+## 高质量
+
 ### 接口管理与mocker
 
 开发前先约定接口
 [接口管理与mocker文档](document/mock.md)
 
-### 测试与发布
-
-
-## 高质量
-
-代码规范
+### 代码规范
 	html
 	css
 	js
 
-code review
+### code review
 
-git规范
+### git规范
 
-监控系统
+### 持续集成
+
+### 测试与发布
+测试 发布 监控系统
 
 ## 高体验
 
