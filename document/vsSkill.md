@@ -31,14 +31,20 @@ snippets文件示例如下
 
 ### 2. 初次安装vscode时同步配置
 ---
-安装sync-setting插件。此插件可以把vscode的设置，包括安装哪些插件，键位绑定，用户代码片段等上传到github上予以托管。当新的电脑需要这些配置的时候可以很方便地进行下载，实现了vscode的设置同步功能。
+###### 两种方式任选其一即可
+1. 安装`sync-setting`插件。此插件可以把vscode的设置，包括安装哪些插件，键位绑定，用户代码片段等上传到github上予以托管。当新的电脑需要这些配置的时候可以很方便地进行下载，实现了vscode的设置同步功能。
 使用方法：[具体文档](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync)
 
-    上传：输入sync-setting选择上传设置选项
+    上传：在vscode命令行`ctrl + shift + p`中输入`sync-setting`选择上传设置选项
     访问 https://github.com/settings/tokens 创建token并记录，输入进行上传
 
-    下载：输入sync-setting选择下载设置选项
+    下载：在vscode命令行`ctrl + shift + p`中输入`sync-setting`选择下载设置选项
     输入token以及Gist ID 进行设置下载，数据新员工可向老员工询问
+
+2. 使用`setting.json`文件进行初始化配置
+直接使用项目中`setting.json`或者向同事索要此文件。此方式可以对vscode的大部分配置进行自动配置，但没有同步插件的功能。下一步前端团队计划研发新三好内部前端初始化vscode插件，自动拉取常用的插件进行安装，实现只安装一个插件即可同步所有插件的功能。
+
+> 另外之后`setting.json`可能会作为项目的配置文件一起与代码进行上传，来规范同步每个人的vscode配置。
 
 ### 3. 前端开发常用技巧以及工具
 ---
@@ -46,10 +52,7 @@ snippets文件示例如下
 CSScomb可以很方便地对css代码进行美化功能，支持属性顺序配置。可以很方便地避免因css代码不规范造成的问题。[示例配置文件](../example/csscomb.json)
 
 使用说明：
-1. 在vscode应用中搜索csscomb并进行下载
-2. 进行代码风格配置： 点击后选择相应的代码格式，生成配置文件 [生成代码风格配置](http://csscomb.com/config)
-3. 进行css属性顺序配置：[配置示例](https://github.com/csscomb/csscomb.js/blob/dev/config)
-4. 将配置好的文件写入setting.json文件中
+1. 在vscode应用商店中搜索`csscomb`并进行下载
 
 ##### postman（测试后端接口，发送请求）
 postman经常用来发送特定请求来测试后台返回数据是否正常，在谷歌商店中安装并进行使用，也可下载本地端。官网下载：https://www.getpostman.com/products
@@ -70,6 +73,7 @@ npm:  https://www.npmjs.com/package/webpack-bundle-analyzer
 例如：
 `import HelloWorld from '../../../../../HelloWrold.vue'`
 此情况下，我们可以配置`package.json`文件中的alias来解决问题。在vue-cli 3.0中，我们配置`chainWebpack`进行间接修改
+
 ```javascript
 /* vue.config.js */
 module.exports = {
@@ -89,4 +93,13 @@ module.exports = {
 ```
 这样，我们的例子可以改写为
 `import HelloWorld from '_com/HelloWorld.vue'`
+
 > 注意:在样式或者模板中引用路径时需在前加上`~`符号，否则路径解析会失败
+
+###### vscode支持
+
+在vscode中，配置完别名会出现IntelliSense失效，即无法用鼠标点击进行路径跳转。这时需新建`jsconfig.json`文件用于指定需要包含或排除的文件，以便vscode提供正确的IntelliSense。
+
+配置文章：https://segmentfault.com/a/1190000018013282?utm_source=tag-newest
+
+具体配置可直接参考文件: [jsconfig.json](../example/jsconfig.json)
